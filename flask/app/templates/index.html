@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <title>Index</title>
+</head>
+
+<h3 style="text-align: center;">¿Qué es el futbol?</h3>
+<p style="text-align: center;">El fútbol es un deporte de equipo jugado entre dos conjuntos de once jugadores cada uno, mientras los árbitros se
+    ocupan de que las normas se cumplan correctamente. Es, ampliamente, considerado el deporte más popular del mundo,
+    pues lo practican unas 270 millones de personas.</p>
+    <img style="width: 1000px;" src="{{ url_for('static', filename='images/futbol1.jpg.jpg') }}"/>
+<h3 style="text-align: center;">Principales futbolistas a seguir</h3>
+<img src="{{ url_for('static', filename='images/jugadores.jpg') }}"/>
+<br>
+<h3 style="text-align: center;">Curiosidades del futbol</h3>
+<p style="text-align: center;">1. El cese de la Guerra en Costa de Marfil se le acredita a un futbolista
+    Obviamente, nada menos que al gran Didier Drogba, capitán del seleccionado costamarfileño. Costa de Marfil estuvo en
+    guerra durante cinco años, entre las fuerzas del norte (rebeldes) y las del sur (gobierno). Desde Inglaterra, donde
+    Drogba jugaba para el equipo de Chelsea, rogó repetidas veces por el cese del conflicto en su país natal. Los
+    costamarfileños, grandes amantes de este deporte, parecieron hacerle caso al deportista, haciendo a un lado sus
+    diferencias y acreditando la paz a Drogba... para todos aquellos que dicen que el fútbol no sirve de nada...</p>
+<img src="{{ url_for('static', filename='images/drogba.jpg') }}"/>
+<br>
+<p style="text-align: center;">2. El primer partido televisado de la historia
+    El primer partido de fútbol que fue transmitido en vivo por televisión fue en 1937. Se trató de un amistoso entre el
+    equipo titular y suplente de Arsenal, en abril de aquel año.</p>
+<img src="{{ url_for('static', filename='images/television.jpg') }}"/>
+</main>
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <title>Tabla futbolistas</title>
+</head>
+
+    <div style="text-align: center; max-width: 600px; margin: auto;">
+      <table style="width: 60%; border: 1px solid black; border-collapse: collapse;">
+        <tr>
+          <th style="border: 1px solid; padding: 10px;">ID</th>
+          <th style="border: 1px solid; padding: 10px;">Nombre</th>
+          <th style="border: 1px solid; padding: 10px;">Equipo</th>
+          <th style="border: 1px solid; padding: 10px;">Dorsal</th>
+          <th style="border: 1px solid; padding: 10px;">Edad</th>
+          <th style="border: 1px solid; padding: 10px;">Goles</th>
+          <th style="border: 1px solid; padding: 10px;">Pais</th>
+          <th style="border: 1px solid; padding: 10px;">Tarjetas</th>
+        </tr>
+        {% for futbolista in futbolistas %}
+        <tr>
+          <th style="border: 1px solid; padding: 10px;">{{ futbolista.id }}</th>
+          <th style="border: 1px solid; padding: 10px;">{{ futbolista.nombre }}</th>
+          <th style="border: 1px solid; padding: 10px;">{{ futbolista.equipo }}</th>
+          <th style="border: 1px solid; padding: 10px;">{{ futbolista.dorsal }}</th>
+          <th style="border: 1px solid; padding: 10px;">{{ futbolista.edad }}</th>
+          <th style="border: 1px solid; padding: 10px;">{{ futbolista.goles }}</th>
+          <th style="border: 1px solid; padding: 10px;">{{ futbolista.pais }}</th>
+          <th style="border: 1px solid; padding: 10px;">{{ futbolista.tarjetas }}</th>
+          <th style="border: 1px solid; padding: 10px;"><form action="/delFutbolistas"  method="post">
+            <input type="hidden" name="id" value="{{futbolista.id}}" />
+            <input type="submit" value="Borrar" />
+          </form></th>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    <div style="border: 1px;"></div>
+    <div style="border: 1px;">
+      <form action="/addFutbolistas"  method="post">
+        <label
+          for="id">ID</label>
+        <input type="text" name="id" value="" />
+        <label
+          for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="" value="" />
+        <label
+          for="nacionalidad">Nacionalidad</label>
+        <input type="text" name="nacionalidad" value="" />
+        <label
+          for="equipo">Equipo</label>
+        <input type="text" name="equipo" value="" />
+        <label
+          for="dorsal">Dorsal</label>
+        <input type="text" name="dorsal" value="" />
+        <label
+          for="edad">Edad</label>
+        <input type="text" name="edad" value="" />
+        <label
+          for="goles">Goles</label>
+        <input type="text" name="goles" value="" />
+        <label
+          for="asistencias">Asistencias</label>
+        <input type="text" name="asistencias" value="" />
+        <input type="submit" value="Add" />
+      </form>
+    </div>
+    
+    <br/>
+    <form action="/updateFutbolistas"  method="post">
+      <label
+        for="nombre">ID</label>
+      <select name="id" >
+        {% for futbolista in futbolistas %}
+          <option value="{{futbolista.id}}">{{futbolista.id}}</option>
+        {% endfor %}
+      </select>
+    
+      <label
+          for="id">ID</label>
+        <input type="text" name="id" value="" />
+        <label
+          for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="" value="" />
+        <label
+          for="nacionalidad">Nacionalidad</label>
+        <input type="text" name="nacionalidad" value="" />
+        <label
+          for="equipo">equipo</label>
+        <input type="text" name="equipo" value="" />
+        <label
+          for="dorsal">Dorsal</label>
+        <input type="text" name="dorsal" value="" />
+        <label
+          for="edad">Edad</label>
+        <input type="text" name="edad" value="" />
+        <label
+          for="goles">Goles</label>
+        <input type="text" name="goles" value="" />
+        <label
+          for="asistencias">Asistencias</label>
+        <input type="text" name="asistencias" value="" />
+    
+      <input type="submit" value="update" />
+    </form>
+
+    <form action="/verTarjetas"  method="post">
+      <label
+        for="id_jugador">Ver tarjetas</label>
+        <select name="id_jugador" >
+          {% for futbolista in futbolistas %}
+            <option value="{{futbolista.id}}">{{futbolista.id}}</option>
+          {% endfor %}
+        </select>
+      <input type="submit" value="Ver" />
+    </form>
+
+    <a href="/verTabla"><img src="{{ url_for('static', filename='images/belligol.jpg') }}"/></a>
+
+{% endblock %}

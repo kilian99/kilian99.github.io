@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <title>Nueva</title>
+</head>
+
+<body>
+    <div id="content">
+        <h3>Cristiano es el mejor futbolista de la historia y no hay debate</h3>
+        <br>
+        <img src="{{ url_for('static', filename='images/bicho.jpg') }}" />
+    </div>
+    <div>
+        <a href="{{ url_for('routes.index') }}">Vuelta al Inicio</a>
+    </div>
+</body>
+{% endblock %}

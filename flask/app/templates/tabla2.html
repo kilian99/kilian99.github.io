@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <title>Tabla tarjetas</title>
+</head>
+
+<div style="text-align: center; max-width: 600px; margin: auto;">
+  <table style="width: 60%; border: 1px solid black; border-collapse: collapse;">
+    <tr>
+      <th style="border: 1px solid; padding: 10px;">ID</th>
+      <th style="border: 1px solid; padding: 10px;">Rival</th>
+      <th style="border: 1px solid; padding: 10px;">Color</th>
+      <th style="border: 1px solid; padding: 10px;">Minuto</th>
+      <th style="border: 1px solid; padding: 10px;">Fecha</th>
+      <th style="border: 1px solid; padding: 10px;">Id_jugador</th>
+    </tr>
+    {% for tarjeta in tarjetas %}
+    <tr>
+      <th style="border: 1px solid; padding: 10px;">{{ tarjeta.id }}</th>
+      <th style="border: 1px solid; padding: 10px;">{{ tarjeta.rival }}</th>
+      <th style="border: 1px solid; padding: 10px;">{{ tarjeta.color }}</th>
+      <th style="border: 1px solid; padding: 10px;">{{ tarjeta.minuto }}</th>
+      <th style="border: 1px solid; padding: 10px;">{{ tarjeta.fecha }}</th>
+      <th style="border: 1px solid; padding: 10px;">{{ tarjeta.id_jugador }}</th>
+      <th style="border: 1px solid; padding: 10px;">
+        <form action="/delFutbolistas" method="post">
+          <input type="hidden" name="id" value="{{tarjeta.id}}" />
+          <input type="submit" value="Borrar" />
+        </form>
+      </th>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+<div style="border: 1px;"></div>
+
+<div style="border: 1px;">
+  <form action="/addFutbolistas" method="post">
+    <label for="id">ID</label>
+    <input type="text" name="id" value="" />
+    <label for="rival">Rival</label>
+    <input type="text" name="rival" id="" value="" />
+    <label for="color">Color</label>
+    <input type="text" name="color" value="" />
+    <label for="minuto">Minuto</label>
+    <input type="text" name="minuto" value="" />
+    <label for="fecha">Fecha</label>
+    <input type="text" name="fecha" value="" />
+    <label for="arbitro">Arbitro</label>
+    <input type="text" name="arbitro" value="" />
+    <input type="submit" value="Add" />
+  </form>
+</div>
+
+<br />
+<form action="/updateFutbolistas" method="post">
+  <label for="nombre">ID</label>
+  <select name="id">
+    {% for tarjeta in tarjetas %}
+    <option value="{{tarjeta.id}}">{{tarjeta.id}}</option>
+    {% endfor %}
+  </select>
+
+  <label for="id">ID</label>
+  <input type="text" name="id" value="" />
+  <label for="rival">Rival</label>
+  <input type="text" name="rival" id="" value="" />
+  <label for="color">Color</label>
+  <input type="text" name="color" value="" />
+  <label for="minuto">Minuto</label>
+  <input type="text" name="minuto" value="" />
+  <label for="fecha">Fecha</label>
+  <input type="text" name="fecha" value="" />
+  <label for="arbitro">Arbitro</label>
+  <input type="text" name="arbitro" value="" />
+
+  <input type="submit" value="update" />
+</form>
+
+
+<img src="{{ url_for('static', filename='images/belligol.jpg') }}" />
+
+{% endblock %}
