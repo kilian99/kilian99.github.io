@@ -2,6 +2,4 @@
 github pages
 # CR7 es el mejor
 
-
-
-# Ciprianito
+# CR7
