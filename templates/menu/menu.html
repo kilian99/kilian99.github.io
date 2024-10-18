@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú del Restaurante</title>
+</head>
+<body>
+    <h1>Menú</h1>
+    <ul>
+        {% for plato in object_list %}
+            <li>{{ plato.nombre }} - {{ plato.descripcion }} - ${{ plato.precio }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Reservar</h2>
+    <form action="{% url 'reserva' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+        <input type="datetime-local" name="fecha" required>
+        <input type="number" name="personas" placeholder="Número de personas" required>
+        <button type="submit">Reservar</button>
+    </form>
+</body>
+</html>
